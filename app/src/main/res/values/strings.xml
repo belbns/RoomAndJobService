@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RoomAndJobService</string>
+    <string name="app_title">Room And JobService Test</string>
+    <string name="temp_air">Температура воздуха: </string>
+    <string name="temp_bat">Температура радиатора: </string>
+    <string name="pressure">Давление: </string>
+
+</resources>
