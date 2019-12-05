@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final Button butSchedule = (Button) findViewById(R.id.butt_shedule);
+        final Button butSchedule = findViewById(R.id.butt_shedule);
         butSchedule.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 scheduleJob();
@@ -75,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     TextView tva = findViewById(R.id.textAir);
-                    tva.setText(getString(R.string.temp_air) + Integer.toString(tAir));
+                    tva.setText(new StringBuilder().append(getString(R.string.temp_air)).append(tAir).toString());
 
                     TextView tvb = findViewById(R.id.textBat);
-                    tvb.setText(getString(R.string.temp_bat) + Integer.toString(tBat));
+                    tvb.setText(new StringBuilder().append(getString(R.string.temp_bat)).append(tBat).toString());
 
                     TextView tvp = findViewById(R.id.textPress);
-                    tvp.setText(getString(R.string.pressure) + Integer.toString(Press));
+                    tvp.setText(new StringBuilder().append(getString(R.string.pressure)).append(Press).toString());
 
                     TextView tv = findViewById(R.id.textViewDB);
                     tv.setText(builder.toString());
@@ -100,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
         ComponentName name = new ComponentName(this, DbUpdateJobService.class);
         JobInfo info = new JobInfo.Builder(jobId, name)
                 .setPersisted(true)
-                .setMinimumLatency(30 * 1000)
-                .setOverrideDeadline(20 * 1000)
                 .setRequiresDeviceIdle(false)
                 .setRequiresCharging(false)
                 .setPeriodic(60 * 1000).build();
