@@ -17,7 +17,7 @@ public interface ClimateDAO {
     @Query("SELECT * FROM climate_table WHERE measure_time = :tm")
     ClimateItem getById(long tm);
 
-    @Query("SELECT * FROM climate_table ORDER BY measure_time ASC LIMIT :num;")
+    @Query("SELECT * FROM climate_table ORDER BY measure_time DESC LIMIT :num;")
     List<ClimateItem> getLastN(int num);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

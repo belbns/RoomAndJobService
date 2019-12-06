@@ -58,9 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Calendar cal = Calendar.getInstance();
 
-                if ((items != null) && (items.size() > 0)) {
+                if ((items != null) && !items.isEmpty()) {
                     StringBuilder builder = new StringBuilder();
-                    for (ClimateItem details : items) {
+                    for (int n = items.size() - 1; n >= 0; n-- ) {
+                    //for (ClimateItem details : items) {
+                        ClimateItem details = items.get(n);
                         cTime = details.measureTime;
                         tAir = details.tempAir;
                         tBat = details.tempBattery;
@@ -68,10 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
                         cal.setTimeInMillis(cTime);
                         Date d = cal.getTime();
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-
-                        builder.append(sdf.format(d)).append(", ").append(tAir).append(", ").append(tBat).append(", ").append(Press).append("\n");
-                        //builder.append(cTime).append(", ").append(tAir).append(", ").append(tBat).append(", ").append(Press).append("\n");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+                         builder.append(sdf.format(d)).append(", ").append(tAir).append(", ").append(tBat).append(", ").append(Press).append("\n");
                     }
 
                     TextView tva = findViewById(R.id.textAir);
